@@ -14,5 +14,7 @@ wp_register_script( 'site-specific-analytics', plugins_url('ga.js', __FILE__ ), 
 
 
 function site_specific_ga_enqueue_script() {
-  wp_enqueue_script( 'site-specific-analytics' );
+  if ( !is_user_logged_in() ) {
+    wp_enqueue_script( 'site-specific-analytics' );
+  }
 }
